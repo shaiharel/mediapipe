@@ -8,6 +8,13 @@ nav_order: 1
 
 --------------------------------------------------------------------------------
 
+## Docker stuff
+Run this to enable docker 
+`newgrp docker  
+sudo usermod -a -G docker shai`
+
+
+
 ## Live ML anywhere
 
 [MediaPipe](https://google.github.io/mediapipe/) offers cross-platform, customizable

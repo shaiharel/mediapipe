@@ -1,0 +1,26 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Build facemesh",
+        "type": "shell",
+        "command": "bazelisk build -c dbg --define MEDIAPIPE_DISABLE_GPU=1 mediapipe/examples/desktop/face_mesh:face_mesh_tflite",
+        "problemMatcher": [],
+        "group": {
+            "kind": "build",
+            "isDefault": true
+          },
+      },
+      {
+        "label": "Build face detect",
+        "type": "shell",
+        "command": "bazelisk build -c dbg --define MEDIAPIPE_DISABLE_GPU=1 mediapipe/examples/desktop/face_detection:face_detection_cpu",
+        "problemMatcher": [],
+        "group": {
+            "kind": "build",
+            "isDefault": true
+          },
+      }
+    ] 
+}
+
