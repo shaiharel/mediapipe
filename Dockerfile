@@ -33,7 +33,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
         build-essential \
-        gcc-8 g++-8 \
+        gcc-9 g++-9 \
         ca-certificates \
         curl \
         ffmpeg \
