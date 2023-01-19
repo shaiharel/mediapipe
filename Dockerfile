@@ -56,7 +56,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     # apt-get install -y mesa-utils && \
 
 
-RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-8 100 --slave /usr/bin/g++ g++ /usr/bin/g++-8
+# RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-8 100 --slave /usr/bin/g++ g++ /usr/bin/g++-8
 RUN pip3 install --upgrade setuptools
 RUN pip3 install wheel
 RUN pip3 install future
@@ -67,10 +67,6 @@ RUN pip3 install tf_slim
 
 RUN ln -s /usr/bin/python3 /usr/bin/python
 
-# Setup opencv
-RUN chmod +x ./setup_opencv.sh && ./setup_opencv.sh &&\
-    echo "export CPLUS_INCLUDE_PATH=/usr/local/include/opencv2:$CPLUS_INCLUDE_PATH" >> /root/.bashrc &&\
-    echo "export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH" >> /root/.bashrc
 
 # Install bazel
 RUN wget -O bazelisk https://github.com/bazelbuild/bazelisk/releases/download/v1.15.0/bazelisk-linux-amd64 &&\
@@ -78,6 +74,12 @@ RUN wget -O bazelisk https://github.com/bazelbuild/bazelisk/releases/download/v1
     mv bazelisk /usr/bin/bazelisk
 
 COPY . /mediapipe/
+
+# Setup opencv
+RUN chmod +x ./setup_opencv.sh && ./setup_opencv.sh &&\
+    echo "export CPLUS_INCLUDE_PATH=/usr/local/include/opencv2:$CPLUS_INCLUDE_PATH" >> /root/.bashrc &&\
+    echo "export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH" >> /root/.bashrc
+
 
 # run build
 RUN chmod +x ./build_desktop_examples.sh &&\

@@ -39,8 +39,8 @@ if [ -z "$1" ]
   then
     echo "Installing OpenCV from source"
     if [[ -x "$(command -v apt)" ]]; then
-      apt update && apt install build-essential git
-      apt install cmake ffmpeg libavformat-dev libdc1394-22-dev libgtk2.0-dev \
+      apt update && apt install -y build-essential git
+      apt install -y cmake ffmpeg libavformat-dev libdc1394-22-dev libgtk2.0-dev \
                        libjpeg-dev libpng-dev libswscale-dev libtbb2 libtbb-dev \
                        libtiff-dev
     elif [[ -x "$(command -v dnf)" ]]; then
